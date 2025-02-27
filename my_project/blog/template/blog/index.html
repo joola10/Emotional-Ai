@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodMate - Emotion AI Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MoodMate</h1>
+            <p class="tagline">Your Emotionally Intelligent Companion</p>
+        </header>
+        <div class="chatbox">
+            <div id="messages">
+                <!-- Chat messages will appear here -->
+                <div class="message bot-message">
+                    <p>Hi there! I'm MoodMate, your Emotion AI. Tell me about your day?</p>
+                </div>
+            </div>
+            <div class="input-area">
+                <input type="text" id="userInput" placeholder="Type your message...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+        <div class="emotion-display">
+            <p><strong>Detected Emotion:</strong> <span id="emotion">Neutral</span></p>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById("userInput").value;
+            if (userInput.trim() === "") return;
+
+            // Add user message to chat
+            const userMessage = document.createElement("div");
+            userMessage.classList.add("message", "user-message");
+            userMessage.innerHTML = `<p>${userInput}</p>`;
+            document.getElementById("messages").appendChild(userMessage);
+
+            // Simulate bot response (replace with actual API call)
+            setTimeout(() => {
+                const botMessage = document.createElement("div");
+                botMessage.classList.add("message", "bot-message");
+                botMessage.innerHTML = `<p>This is a simulated response from MoodMate.</p>`;
+                document.getElementById("messages").appendChild(botMessage);
+
+                // Simulate emotion detection (replace with actual emotion detection logic)
+                document.getElementById("emotion").innerText = "Happy";
+            }, 1000);
+
+            // Clear input field
+            document.getElementById("userInput").value = "";
+
+            // Scroll to the bottom of the chatbox
+            const chatbox = document.querySelector(".chatbox");
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+    </script>
+</body>
+</html>
